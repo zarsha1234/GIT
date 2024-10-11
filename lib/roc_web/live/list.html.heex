@@ -1,0 +1,29 @@
+
+<.table
+  id="subject"
+  rows={@streams.subject}
+  row_click={fn {_id, subject} -> JS.navigate(~p"/subject/#{subject}") end}
+>
+  <:col :let={{_id, subject}} label="Class"><%= subject.class %></:col>
+  <:col :let={{_id, subject}} label="Marks"><%= subject.marks %></:col>
+<:col :let={{_id, subject}} label="Status"><%= subject.status %></:col>
+<:col :let={{_id, subject}} label="Percentage"><%= subject.percentage %></:col>
+  <:action :let={{id, subject}}>
+    <.link
+      phx-click={JS.push("delete", value: %{id: subject.id}) |> hide("##{id}")}
+      data-confirm="Are you sure?"
+    >
+      Delete
+    </.link>
+  </:action>
+
+
+
+  <:action :let={{id, subject}}> 
+    <.link patch={~p"/subject/#{subject}/edit"}>
+      <.button>Edit </.button>
+    </.link>
+  </:action>
+</.table>
+
+

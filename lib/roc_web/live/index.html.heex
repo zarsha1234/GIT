@@ -1,0 +1,21 @@
+
+<.header >
+    Subjects Marks
+    <:actions>
+      <.link patch={~p"/subject/new"}>
+        <.button>New Subject</.button>
+      </.link>
+    </:actions>
+</.header>
+
+<.form for={@form} phx-change="validate" phx-submit="save">
+    <label for="status">Status</label>
+  <.input type="checkbox" field={@form[:status]}  />
+    <label for="marks">Marks</label>
+  <.input type="number" field={@form[:marks]} /> 
+    <label for="class">Class</label>
+  <.input type="text" field={@form[:class]} />
+    <label for="percentage">Percentage</label>
+  <.input type="number" field={@form[:percentage]} />
+    <.button >Save</.button>
+ </.form>

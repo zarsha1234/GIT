@@ -1,0 +1,15 @@
+
+
+<.form for={@form} phx-change="validate_subject" phx-submit="save_subject">
+    <label for="status">Status</label>
+  <.input type="checkbox" field={@form[:status]}  />
+    <label for="marks">Marks</label>
+  <.input type="number" field={@form[:marks]} /> 
+    <label for="class">Class</label>
+  <.input type="text" field={@form[:class]} />
+    <label for="percentage">Percentage</label>
+  <.input type="number" field={@form[:percentage]} />
+    <.button >Save</.button>
+ </.form>
+
+
