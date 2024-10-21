@@ -14,15 +14,10 @@ defmodule RocWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", RocWeb do
-    pipe_through :browser
-
-    get "/", PageController, :home
-    live "/new/index", Live.Index
-    live "/page/index", Live.List
-    live "/index", Live.List
-    live "/subject/:id/edit", Live.Edit
-
+  scope "/api", RocWeb do
+    pipe_through :api
+    get "/quotes", QuotesController, :index
+    get "/quotes/random", QuotesController, :show
 
 
 
@@ -30,9 +25,17 @@ defmodule RocWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", RocWeb do
-  #   pipe_through :api
-  # end
+  scope "/", RocWeb do
+    pipe_through :browser
+    get "/quotes", QuotesController, :index
+    get "/quotes/random", QuotesController, :show
+    get "/", PageController, :home
+    live "/new/index", Live.Index
+    live "/page/index", Live.List
+    live "/index", Live.List
+    live "/subject/:id/edit", Live.Edit
+
+  end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
   if Application.compile_env(:roc, :dev_routes) do
