@@ -24,8 +24,6 @@ def handle_event("validate", %{"subject"=>roc_parmas},socket) do
   IO.inspect({"Form submitted!!", roc_params})
   changeset = Subject.changeset(%Subject{}, roc_params)
    Repo.insert(changeset)
+ end
 
-
-
-  end
 end
